@@ -4,6 +4,7 @@ import LoginPage from "./pages/login/login.page.tsx";
 import DashboardPage from "./pages/dashboard/dashboard.page.tsx";
 import ProductsPage from "./pages/products/products.page.tsx";
 import HeaderComponent from "./components/header/header.component.tsx";
+import FooterComponent from "./components/footer/footer.component.tsx";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
                     <Route path={'/dashboard'} element={<DashboardPage/>}/>
                     <Route path={'/products'} element={<ProductsPage/>}/>
             </Routes>
+          <FooterComponent/>
       </BrowserRouter>
     </>
   )

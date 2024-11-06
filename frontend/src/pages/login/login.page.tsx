@@ -1,10 +1,11 @@
-import React, {FormEvent} from 'react';
+import React, {FormEvent, useEffect, useState} from 'react';
 import {loginUser} from "../../services/login/login.service.ts";
 import {useNavigate} from "react-router";
 
 const LoginPage: React.FC = () => {
 
     const navigate = useNavigate();
+    const [accessToken, setAccessToken] = useState<string>();
 
 
     const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
@@ -14,12 +15,17 @@ const LoginPage: React.FC = () => {
 
 
         loginUser(username, password).then((token) => {
-            localStorage.setItem("accessToken", token);
-            navigate('/dashboard');
-
+            // Token trotzdem setzen -> Produktseite greift noch darauf zu
+            localStorage.setItem('accessToken', token)
+            setAccessToken(token);
         });
     }
 
+    useEffect(() => {
+        if (accessToken) {
+            navigate(`/dashboard?accessToken=${accessToken}`);
+        }
+    }, [accessToken]);
 
     return (
         <div>

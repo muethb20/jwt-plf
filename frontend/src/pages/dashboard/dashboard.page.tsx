@@ -2,13 +2,17 @@ import * as React from 'react';
 import {useEffect, useState} from "react";
 import {User} from "../../interfaces/user.interface.ts";
 import {verifyAccessToken} from "../../services/jwt/jwt.service.ts";
+import {useSearchParams} from "react-router-dom";
 
 const DashboardPage: React.FC = () => {
 
     const [user, setUser] = useState<User>()
 
+    //const routeParams = useParams();
+    const [searchParams] = useSearchParams();
+
     useEffect(() => {
-        const accessToken = localStorage.getItem('accessToken');
+        const accessToken = searchParams.get('accessToken');
 
         if (accessToken){
             setUser(verifyAccessToken(accessToken).user);
@@ -25,7 +29,7 @@ const DashboardPage: React.FC = () => {
         );
     }  else {
         return (
-            <h3 style={{color: "crimson"}}>No user logged in!</h3>
+            <h3 style={{color: "crimson"}}>No query params found!</h3>
         )
     }
 
