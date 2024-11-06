@@ -14,14 +14,21 @@ const DashboardPage: React.FC = () => {
             setUser(verifyAccessToken(accessToken).user);
         }
 
-    }, [user]);
+    }, []);
 
-    return (
-        <div>
-            <h1>Dashboard</h1>
-            <h2>User: {user?.role}</h2>
-        </div>
-    );
+    if (user) {
+        return (
+            <div>
+                <h1>Dashboard</h1>
+                <h2>User: {user?.role}</h2>
+            </div>
+        );
+    }  else {
+        return (
+            <h3 style={{color: "crimson"}}>No user logged in!</h3>
+        )
+    }
+
 };
 
 export default DashboardPage;

@@ -1,24 +1,14 @@
 import express, {Request, Response} from 'express';
 import {products} from "../mockdata/products.mockdata";
-import {verifyAccessToken} from "../util/jwt/jwt.service";
+import {authenticateToken} from "../util/jwt/jwt.service";
 import {getProductsFromUser} from "../util/product/product.service";
+import {AccessTokenInterface} from "../interfaces/accessToken.interface";
 
 let router = express.Router();
 
-router.get('/', (req: Request, res: Response) => {
-    const accessToken = req.headers.authorization;
-
-    try {
-        if (accessToken) {
-            const user = verifyAccessToken(accessToken).user;
-            res.status(201).send(getProductsFromUser(user));
-        } else {
-            res.status(403).json({"error": "No Authorization provided!"})
-        }
-    }catch (error) {
-        res.status(401).send("Invalid Signature!");
-    }
-
-
+router.get('/', authenticateToken,(req: Request, res: Response) => {
+    const accessToken = req.body as AccessTokenInterface;
+    const user = accessToken.user;
+        res.status(201).send(getProductsFromUser(user));
 })
 export default router;

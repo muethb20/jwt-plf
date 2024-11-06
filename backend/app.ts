@@ -10,10 +10,10 @@ const PORT = process.env.PORT || 4000;
 
 import loginRouter from './routes/login';
 import productRouter from './routes/productaccess';
-import {products} from "./mockdata/products.mockdata";
 
 var app = express();
 
+/*
 const allowedOrigins = ['http://localhost:5173'];
 const corsOptions = {
     origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
@@ -27,7 +27,9 @@ const corsOptions = {
     credentials: true, // Erlaube Cookies zu senden mit CORS-Anfragen
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
-app.use(cors(corsOptions));
+app.use(cors(corsOptions));*/
+
+app.use(cors())
 
 app.use(bodyParser.json());
 app.use(express.json());

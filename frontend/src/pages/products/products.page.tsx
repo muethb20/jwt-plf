@@ -19,15 +19,22 @@ const ProductsPage: React.FC = () => {
         }
     }, [])
 
-    return (
-        <div>
-            <h2>Products for user: {user?.email}</h2>
-            <ul>
-                {products.map((p:Product)=>
-                    (<li key={p.id}>{p.name} - {p.msg}</li>))}
-            </ul>
-        </div>
-    );
+    if (user) {
+        return (
+            <div>
+                <h2>Products for user: {user?.email}</h2>
+                <ul>
+                    {products.map((p:Product)=>
+                        (<li key={p.id}>{p.name} - {p.msg}</li>))}
+                </ul>
+            </div>
+        );
+    } else {
+        return (
+            <h3 style={{color: "crimson"}}>No user logged in!</h3>
+        )
+    }
+
 };
 
 export default ProductsPage;

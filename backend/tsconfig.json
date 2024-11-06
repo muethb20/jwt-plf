@@ -2,8 +2,6 @@
   "compilerOptions": {
     "target": "ES6",                    // Zielversion von JavaScript
     "module": "CommonJS",                  // Modulformat für Node.js
-    "rootDir": "./",                    // Der Quellverzeichnis für deine Dateien
-    "outDir": "./dist",                    // Ausgabeort der kompilierten Dateien
     "strict": true,                         // Aktiviert strikte Typüberprüfungen
     "esModuleInterop": true,                // Ermöglicht die Interoperabilität zwischen CommonJS und ES-Modulen
     "skipLibCheck": true,                   // Überspringt die Typprüfung von deklarationsdateien

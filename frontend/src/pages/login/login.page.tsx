@@ -7,16 +7,17 @@ const LoginPage: React.FC = () => {
     const navigate = useNavigate();
 
 
-    const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
         const username = e.currentTarget.inpUserName.value;
         const password = e.currentTarget.inpPassword.value;
+        e.preventDefault();
 
 
         loginUser(username, password).then((token) => {
             localStorage.setItem("accessToken", token);
-        });
+            navigate('/dashboard');
 
-        navigate('/dashboard');
+        });
     }
 
 

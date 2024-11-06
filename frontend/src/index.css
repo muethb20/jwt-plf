@@ -25,9 +25,18 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  place-items: first;
   min-width: 320px;
   min-height: 100vh;
+}
+
+input {
+  width: 20em;
+  height: 2em;
+  border-radius: 0.5em;
+  border: 1px solid #535bf2;
+  margin-bottom: 0.5em;
+  padding: 0.25em;
 }
 
 h1 {
