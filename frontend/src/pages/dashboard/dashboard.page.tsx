@@ -9,15 +9,17 @@ const DashboardPage: React.FC = () => {
 
     useEffect(() => {
         const accessToken = localStorage.getItem('accessToken');
+
         if (accessToken){
             setUser(verifyAccessToken(accessToken).user);
         }
-    }, [])
+
+    }, [user]);
 
     return (
         <div>
             <h1>Dashboard</h1>
-            <h2>User: {user?.email}</h2>
+            <h2>User: {user?.role}</h2>
         </div>
     );
 };

@@ -10,6 +10,8 @@ const HeaderComponent: React.FC = () => {
             <Link to={'/products'}>Products</Link>
             <br/>
             <Link to={'/login'}>Login</Link>
+            <br/>
+            {/*<Link<button onClick={() => {localStorage.setItem("accessToken", "")}}>Logout!!</button>*/}
         </div>
     );
 };
