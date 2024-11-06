@@ -1,16 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import LoginPage from "./pages/login/login.page.tsx";
+import DashboardPage from "./pages/dashboard/dashboard.page.tsx";
+import ProductsPage from "./pages/products/products.page.tsx";
+import HeaderComponent from "./components/header/header.component.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <h1>Test</h1>
-      </div>
+      <BrowserRouter>
+          <HeaderComponent/>
+            <Routes>
+                    <Route path={'/login'} element={<LoginPage/>}/>
+                    <Route path={'/dashboard'} element={<DashboardPage/>}/>
+                    <Route path={'/products'} element={<ProductsPage/>}/>
+            </Routes>
+      </BrowserRouter>
     </>
   )
 }
