@@ -1,7 +1,19 @@
-import {User} from "../interfaces/user.interface";
+import {IUser} from "../interfaces/user.interface";
+import {Role} from "../interfaces/role.enum";
 
-export const users:User[] = [
-    { id: 1, email: 'admin@example.com', password: 'password', role: 'admin' },
-    { id: 2, email: 'employee1@example.com', password: 'password', role: 'employee1' },
-    { id: 3, email: 'employee2@example.com', password: 'password', role: 'employee2' }
+export const usersMockdata: IUser[] = [
+    {
+        id: 1,
+        username: 'guestUser',
+        password: 'password123',
+        email: 'guest@example.com',
+        role: Role.GUEST
+    },
+    {
+        id: 2,
+        username: 'distributerUser',
+        password: 'distributer456',
+        email: 'distributer@example.com',
+        role: Role.DISTRIBUTOR
+    }
 ];

@@ -9,25 +9,9 @@ dotenv.config();
 const PORT = process.env.PORT || 4000;
 
 import loginRouter from './routes/login';
-import productRouter from './routes/productaccess';
+import feedRouter from './routes/posts';
 
 var app = express();
-
-/*
-const allowedOrigins = ['http://localhost:5173'];
-const corsOptions = {
-    origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
-        if (allowedOrigins.indexOf(origin!) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Nicht erlaubter Ursprung'));
-        }
-    },
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', // Erlaubte HTTP-Methoden
-    credentials: true, // Erlaube Cookies zu senden mit CORS-Anfragen
-    allowedHeaders: ['Content-Type', 'Authorization'],
-};
-app.use(cors(corsOptions));*/
 
 app.use(cors())
 
@@ -37,6 +21,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/login', loginRouter);
-app.use('/products', productRouter);
+app.use('/posts', feedRouter);
 
 module.exports = app;

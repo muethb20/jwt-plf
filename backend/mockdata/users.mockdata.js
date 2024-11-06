@@ -1,8 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.users = void 0;
-exports.users = [
-    { id: 1, email: 'admin@example.com', password: 'password', role: 'admin' },
-    { id: 2, email: 'employee1@example.com', password: 'password', role: 'employee1' },
-    { id: 3, email: 'employee2@example.com', password: 'password', role: 'employee2' }
+exports.usersMockdata = void 0;
+const role_enum_1 = require("../interfaces/role.enum");
+exports.usersMockdata = [
+    {
+        id: 1,
+        username: 'guestUser',
+        password: 'password123',
+        email: 'guest@example.com',
+        role: role_enum_1.Role.GUEST
+    },
+    {
+        id: 2,
+        username: 'distributerUser',
+        password: 'distributer456',
+        email: 'distributer@example.com',
+        role: role_enum_1.Role.DISTRIBUTOR
+    }
 ];

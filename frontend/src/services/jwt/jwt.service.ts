@@ -1,6 +1,12 @@
-import {AccessTokenInterface} from "../../interfaces/accessToken.interface.ts";
+import {IUser} from "../../interfaces/user.interface.ts";
 
-export const verifyAccessToken = (token: string): AccessTokenInterface => {
-    const payloadBase64 = token?.split(".")[1];
-    return JSON.parse(atob(payloadBase64)) as AccessTokenInterface
+export const getUserFromToken = (token: string) : IUser=> {
+
+    //const token = localStorage.getItem('accessToken');
+
+    if (token){
+        const user = JSON.parse(atob(token.split('.')[1])) as IUser;
+        return user;
+    } else throw new Error("Invalid JWT Token!");
+
 }

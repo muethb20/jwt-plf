@@ -1,7 +1,7 @@
-import {User} from "./user.interface";
+import {IUser} from "./user.interface";
 
 export interface AccessTokenInterface {
-    user: User,
-    iat: number,
-    exp: number
+    exp:number,
+    id: number,
+    user: IUser
 }

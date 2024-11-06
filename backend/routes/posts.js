@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const jwt_service_1 = require("../util/jwt/jwt.service");
-const product_service_1 = require("../util/product/product.service");
+const jwt_service_1 = require("../services/jwt/jwt.service");
+const posts_mockdata_1 = require("../mockdata/posts.mockdata");
 let router = express_1.default.Router();
-router.get('/', jwt_service_1.authenticateToken, (req, res) => {
-    const accessToken = req.body;
-    const user = accessToken.user;
-    res.status(201).send((0, product_service_1.getProductsFromUser)(user));
+router.get('/', jwt_service_1.verifyToken, (req, res) => {
+    const user = req.body.user;
+    const posts = posts_mockdata_1.mockPosts.filter(value => value.role == user.role);
+    res.status(200).send(posts);
 });
 exports.default = router;
